@@ -40,11 +40,13 @@ public class Player : MonoBehaviour
         }
         if (transform.position.y > 10 || transform.position.y < -10 || puan <= 0)
         {
-           
-            Destroy(gameObject);
-            gameManager.GameOver();
-            puanTextMesh.text = "    " + puan;
+            
+                Destroy(gameObject);
+                gameManager.GameOver();
+                puanTextMesh.text = "    " + puan;
+            
         }
+            
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -93,29 +93,37 @@ public class GameManager : MonoBehaviour
     }
     void SpawnRandomSafetyArea()
     {
+        if(player != null)
+        {
             float playerPositionY = player.transform.position.y;
 
-            if(isGameActive && playerPositionY < 0)
+            if (isGameActive && playerPositionY < 0)
             {
-                Instantiate(safetyArea, new Vector3(0,Random.Range(5,1),2), transform.rotation);
+                Instantiate(safetyArea, new Vector3(0, Random.Range(5, 1), 2), transform.rotation);
             }
             else
             {
-                Instantiate(safetyArea, new Vector3(0,Random.Range(-1,-4),2), transform.rotation);
+                Instantiate(safetyArea, new Vector3(0, Random.Range(-1, -4), 2), transform.rotation);
             }
+        }
+            
     }
     void SpawnRandomDangerArea()
     {
+        if(player != null)
+        {
             float playerPositionY = player.transform.position.y;
 
-            if(isGameActive && playerPositionY < 0)
+            if (isGameActive && playerPositionY < 0)
             {
-                Instantiate(dangerArea, new Vector3(0,Random.Range(5,1),2), transform.rotation);
+                Instantiate(dangerArea, new Vector3(0, Random.Range(5, 1), 2), transform.rotation);
             }
             else
             {
-                Instantiate(dangerArea, new Vector3(0,Random.Range(-1,-4),2), transform.rotation);
+                Instantiate(dangerArea, new Vector3(0, Random.Range(-1, -4), 2), transform.rotation);
             }
+        }
+            
     }
     public void SafetyAreaKill()
     {
