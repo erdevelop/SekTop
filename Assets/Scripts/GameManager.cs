@@ -99,11 +99,19 @@ public class GameManager : MonoBehaviour
 
             if (isGameActive && playerPositionY < 0)
             {
-                Instantiate(safetyArea, new Vector3(0, Random.Range(5, 1), 2), transform.rotation);
+                GameObject _safetyArea = ObjectPooler.SharedInstance.GetPooledObject();
+                _safetyArea.transform.position = new Vector3(0, Random.Range(5f, 1f), 2f);
+                _safetyArea.transform.rotation = Quaternion.identity;
+                _safetyArea.SetActive(true);
+                //Instantiate(safetyArea, new Vector3(0, Random.Range(5, 1), 2), transform.rotation);
             }
             else
             {
-                Instantiate(safetyArea, new Vector3(0, Random.Range(-1, -4), 2), transform.rotation);
+                GameObject _safetyArea = ObjectPooler.SharedInstance.GetPooledObject();
+                _safetyArea.transform.position = new Vector3(0, Random.Range(-1f, -4f), 2f);
+                _safetyArea.transform.rotation = Quaternion.identity;
+                _safetyArea.SetActive(true);
+                //Instantiate(safetyArea, new Vector3(0, Random.Range(-1, -4), 2), transform.rotation);
             }
         }
             
@@ -116,11 +124,19 @@ public class GameManager : MonoBehaviour
 
             if (isGameActive && playerPositionY < 0)
             {
-                Instantiate(dangerArea, new Vector3(0, Random.Range(5, 1), 2), transform.rotation);
+                GameObject _dangerArea = ObjectPooler.SharedInstance.GetPooledObject2();
+                _dangerArea.transform.position = new Vector3(0, Random.Range(5f, 1f), 2f);
+                _dangerArea.transform.rotation = Quaternion.identity;
+                _dangerArea.SetActive(true);
+                //Instantiate(dangerArea, new Vector3(0, Random.Range(5, 1), 2), transform.rotation);
             }
             else
             {
-                Instantiate(dangerArea, new Vector3(0, Random.Range(-1, -4), 2), transform.rotation);
+                GameObject _dangerArea = ObjectPooler.SharedInstance.GetPooledObject2();
+                _dangerArea.transform.position = new Vector3(0, Random.Range(-1f, -4f), 2f);
+                _dangerArea.transform.rotation = Quaternion.identity;
+                _dangerArea.SetActive(true);
+                //Instantiate(dangerArea, new Vector3(0, Random.Range(-1, -4), 2), transform.rotation);
             }
         }
             
@@ -128,12 +144,22 @@ public class GameManager : MonoBehaviour
     public void SafetyAreaKill()
     {
         alan = GameObject.FindWithTag("SafetyArea");
-        Destroy(alan);
+        if(alan != null)
+        {
+            alan.SetActive(false);
+            //Destroy(alan);
+        }
+
     }
     public void DangerAreaKill()
     {
         alanDanger = GameObject.FindWithTag("DangerArea");
-        Destroy(alanDanger);
+        if(alanDanger != null)
+        {
+            alanDanger.SetActive(false);
+            //Destroy(alanDanger);
+        }
+
     }
     public void CloudKill()
     {
